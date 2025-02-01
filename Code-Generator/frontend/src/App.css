@@ -1,0 +1,73 @@
+:root {
+  --pink: #ff69b4;
+  --soft-pink: #ffb3d9;
+  --dark-pink: #ff1493;
+  --background: #fff0f7;
+  --code-bg: #2b2b2b;
+}
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background: var(--background);
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Main Container */
+.generator-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.generator-container::before {
+  content: 'UwU';
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  font-size: 4rem;
+  color: rgba(255,105,180,0.1);
+  transform: rotate(15deg);
+}
+
+/* Input Section */
+.prompt-input {
+  width: 100%;
+  height: 150px;
+  padding: 1.5rem;
+  border: 3px solid var(--soft-pink);
+  border-radius: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.prompt-input:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(255,105,180,0.2);
+}
+
+/* Button Styling */
+.generate-button {
+  background: linear-gradient(135deg, var(--pink), var(--dark-pink));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.generate-button:hover {
+  transform: tr
+}
