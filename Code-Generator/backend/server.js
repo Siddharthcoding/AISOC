@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: ['https://aisoc-frontend-g06y.onrender.com'],
+  origin: "https://aisoc-frontend-g06y.onrender.com",
   credentials: true
 }));
 app.use(bodyParser.json());
