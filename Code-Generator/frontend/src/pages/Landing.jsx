@@ -38,7 +38,7 @@ const Landing = () => {
                     src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg"
                     alt="Store Logo"
                   /> */}
-                  UwU
+                  UwU CodeGen
                 </h3>
               </Link>
             </div>
