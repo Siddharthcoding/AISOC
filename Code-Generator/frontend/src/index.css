@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
 body {
-  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+  font-family:  'Poppins';
   background-color: #fff0f7;
   margin: 0;
   padding: 0;

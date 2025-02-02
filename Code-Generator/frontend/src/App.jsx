@@ -3,6 +3,9 @@ import axios from 'axios';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import Landing from './pages/Landing';
+import Signup from './pages/Signup'
+
 
 function CodeGenerator() {
   const [prompt, setPrompt] = useState('');
@@ -117,8 +120,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/home" element={<Landing/>} />
         <Route path="/" element={<CodeGenerator />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
