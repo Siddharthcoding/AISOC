@@ -2,11 +2,13 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Chat = () => {
   const [prompt, setPrompt] = useState('');
   const [uwuCode, setUwuCode] = useState('');
   const [fetchData, setFetchData] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch chat history when the component mounts
   useEffect(() => {
@@ -72,9 +74,25 @@ const Chat = () => {
       });
   };
 
+  const handleLogout = async()=>{
+    const token = localStorage.getItem("token"); 
+  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/logout`,{},{headers: {
+    Authorization: `Bearer ${token}`,
+  },})
+  if(response){
+    localStorage.removeItem("token");
+    navigate("/");
+  }
+  }
+
   return (
     <div className="generator-container">
-      
+      <button 
+        onClick={handleLogout} 
+        className="absolute top-4 right-4 bg-[#ffea2c] text-black px-4 py-2 rounded-2xl text-sm hover:bg-[#f4c237]"
+      >
+        Logout<i className="fa-solid fa-right-from-bracket ml-2"></i>
+      </button>
 
       {/* {uwuCode && (
         <SyntaxHighlighter language="python" style={atomOneDark}>
@@ -83,18 +101,18 @@ const Chat = () => {
       )} */}
 
       
-      <div className="chat-history">
+<div className="chat-history mt-[80px] text-black ">
         {fetchData.map((item, index) => (
-          <div key={index} className="chat-item">
-            <h3>Input:</h3>
-            <p>{item.input}</p>
-            <h3>Content:</h3>
-            <div style={{ position: 'relative' }}>
+          <div key={index} className="chat-item mb-4 p-4 border border-gray-300 bg-slate-100/35 rounded border-2">
+            <h3 className="font-bold text-xl">Input:</h3>
+            <p className='italic text-xl'>{item.input}</p>
+            <h3 className="font-bold text-xl">Content:</h3>
+            <div className="relative">
               <button 
                 onClick={() => copyToClipboard(item.content)} 
-                style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }}
+                className="absolute top-2 right-2 z-10 bg-gray-400/50 text-white p-3 rounded"
               >
-                Copy
+                <i className="fa-regular fa-copy"></i>
               </button>
               <SyntaxHighlighter language="python" style={atomOneDark}>
                 {item.content}

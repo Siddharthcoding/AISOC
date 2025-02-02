@@ -68,7 +68,7 @@ const Landing = () => {
             <div className="flex items-center space-x-5 text-sm hidden md:flex">
 
               {/* Login */}
-              <Link className="flex text-black text-sm cursor-pointer transition-colors duration-300 hover:text-blue-500 font-semibold text-blue-600" to="/login">
+              <Link className="flex text-black text-sm cursor-pointer transition-colors duration-300 hover:text-blue-500 font-semibold text-black" to="/login">
                 <svg
                   className="fill-current h-5 w-5 mr-2 mt-0.5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -115,14 +115,14 @@ const Landing = () => {
 
             <div className="text-center lg:text-left">
               <Link
-                to="#"
+                to="/login"
                 className="block visible py-4 px-8 mb-4 text-xs font-semibold tracking-wide leading-none text-white bg-blue-500 rounded cursor-pointer sm:mr-3 sm:mb-0 sm:inline-block"
               >
                 Try UwU
               </Link>
 
               <Link
-                to="#"
+                to="/signup"
                 className="block visible py-4 px-8 text-xs font-semibold leading-none bg-white rounded border border-solid cursor-pointer sm:inline-block border-slate-200 text-slate-500"
               >
                 Join Us
@@ -290,7 +290,7 @@ const Landing = () => {
           {/* Copyright Bar */}
           <div className="pt-2">
             <div className="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-gray-400 text-sm flex-col md:flex-row max-w-6xl">
-              <div className="mt-2">© Copyright 1998-year. All Rights Reserved.</div>
+              <div className="mt-2">© Copyright 2025-year. All Rights Reserved.</div>
 
               {/* Required Unicons (if you want) */}
               <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">

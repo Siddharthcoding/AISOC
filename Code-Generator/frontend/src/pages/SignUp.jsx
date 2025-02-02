@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
-// import zxcvbn from 'zxcvbn'; // Import zxcvbn for password strength checking
+import  { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Signup = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [fname, setFirstName] = useState('');
+    const [lname, setLastName] = useState('');
+    const [mname, setMName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleRegister = () => {
-        // Handle registration logic here
-        console.log({ firstName, lastName, email, password });
+    const handleRegister = async() => {
+        const userData = {fname,mname,lname,email,password};
+
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/signup`, userData);
+
+        if(response.status == 201){
+        navigate('/login');
+        }else{
+            console.log(response);
+        }
     };
 
     return (
@@ -26,8 +36,8 @@ const Signup = () => {
                         </div>
                     <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
                         <div className="text-center mb-10">
-                            <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
-                            <p>Enter your information to register</p>
+                            <h1 className="font-bold text-3xl text-gray-900">SignUp</h1>
+                            <p>Enter your information to Signup</p>
                         </div>
                         <div>
                             <div className="flex -mx-3">
@@ -41,7 +51,7 @@ const Signup = () => {
                                             type="text"
                                             className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                                             placeholder="John"
-                                            value={firstName}
+                                            value={fname}
                                             onChange={(e) => setFirstName(e.target.value)}
                                         />
                                     </div>
@@ -57,7 +67,7 @@ const Signup = () => {
                                             type="text"
                                             className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                                             placeholder="Smith"
-                                            value={lastName}
+                                            value={lname}
                                             onChange={(e) => setLastName(e.target.value)}
                                         />
                                     </div>
@@ -72,9 +82,9 @@ const Signup = () => {
                                         <input
                                             type="text"
                                             className="w-full -ml-10 pl-2 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                            placeholder="Not Mandetry"
-                                            value={firstName}
-                                            onChange={(e) => setFirstName(e.target.value)}
+                                            placeholder="Not Mandatory"
+                                            value={mname}
+                                            onChange={(e) => setMName(e.target.value)}
                                         />
                                     </div>
                                 </div>
