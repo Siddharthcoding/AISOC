@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Chat from './pages/Chat';
 import Landing from './pages/Landing';
 import SignIn from './pages/SignIn';
-import Signup from './pages/Signup';
+import Signup from './pages/SignUp';
 
 
 function App() {
