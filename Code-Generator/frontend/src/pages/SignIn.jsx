@@ -1,12 +1,36 @@
-import React, { useState } from 'react';
-import '../App.css'; // Assuming you have Tailwind CSS imported in your CSS file
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const SignIn = () => {
+
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(true);
+  const [password,setPassword] = useState('');
+  const [email,setEmail] = useState('');
+  const userData = {password,email}
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/login`, userData);
+     console.log(response);
+      if(response.status == 200){
+        const data = response.data;
+        localStorage.setItem("token",data.token);
+        console.log("Token from storage:", localStorage.getItem("token"));
+        navigate('/chat');
+      }
+      
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
 
   return (
     <div className="bg-gray-700 font-poppins absolute top-0 left-0 bg-gradient-to-b from-gray-500 via-gray-800 to-black bottom-0 leading-5 h-full w-full overflow-hidden">
-
+      <form onSubmit={handleLogin} >
       <div className="relative min-h-screen sm:flex sm:flex-row justify-center bg-transparent rounded-3xl shadow-xl">
         <div className="flex-col flex self-center lg:px-14 sm:max-w-4xl xl:max-w-md z-10">
           <div className="self-start hidden lg:flex flex-col text-gray-300">
@@ -36,6 +60,8 @@ Join a new era of esolang programming. Fast, effortless, and AI-driven.
                   className="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
                   type="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e)=> setEmail(e.target.value)}
                 />
               </div>
               <div className="relative">
@@ -43,6 +69,8 @@ Join a new era of esolang programming. Fast, effortless, and AI-driven.
                   placeholder="Password"
                   type={showPassword ? 'password' : 'text'}
                   className="text-sm text-gray-200 px-4 py-3 rounded-lg w-full bg-gray-200 focus:bg-gray-100 border border-gray-200 focus:outline-none focus:border-purple-400"
+                  value={password}
+                  onChange={(e)=> setPassword(e.target.value)}
                 />
                 <div className="flex items-center absolute inset-y-0 right-0 mr-3 text-sm leading-5">
                   <svg
@@ -126,6 +154,8 @@ Join a new era of esolang programming. Fast, effortless, and AI-driven.
           </div>
         </div>
       </div>
+      </form>
+      
       <footer className="bg-transparent absolute w-full bottom-0 left-0 z-30">
         <div className="container p-5 mx-auto flex items-center justify-between">
           <div className="flex mr-auto">

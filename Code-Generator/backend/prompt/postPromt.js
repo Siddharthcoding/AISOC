@@ -1,5 +1,4 @@
 import prisma from "../db/db.config.js";
-import {protectUser} from "../middleware/protectUser.js";
 import Groq from "groq-sdk";
 import { languageSpecification } from "../lib/utils/languageSpecification.js"; 
 

@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useRef } from "react"; // Import useRef from react
 
 const Landing = () => {
+   
     const nextSectionRef = useRef(null);
     const middleSectionRef = useRef(null);
   return (
@@ -26,31 +27,32 @@ const Landing = () => {
       <main className="flex flex-col items-center font-Poppins justify-center mt-16">
         <header className="container ">
           {/* Navbar */}
-          <nav className="flex justify-between md:justify-around py-4 bg-white/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
+          <nav className="flex justify-between md:justify-around py-4 bg-gray-400/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
             {/* Logo Container */}
             <div className="flex items-center">
               {/* Logo */}
               <Link className="cursor-pointer" to="/">
-                <h3 className="text-2xl font-medium text-blue-500">
-                  <img
+                <h3 className="text-2xl font-medium text-black-500">
+                  {/* <img
                     className="h-10"
                     src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg"
                     alt="Store Logo"
-                  />
+                  /> */}
+                  UwU
                 </h3>
               </Link>
             </div>
 
             {/* Links Section */}
             <div className="items-center text-sm md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-15 md:px-10 py-3 md:py-0 border-t md:border-t-0">
-              <Link className="flex text-gray-600 hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300" to="/">Home</Link>
+              <Link className="flex text-black hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300" to="/">Home</Link>
               <Link
               to="#Developers"
               onClick={(e) => {
                 e.preventDefault();
                 nextSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
               }}
-                className="flex text-gray-600 hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300"
+                className="flex text-black hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300"
               >
                 Developers
               </Link>
@@ -59,14 +61,14 @@ const Landing = () => {
                     e.preventDefault(); 
                     middleSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
                   }}
-              className="flex text-gray-600 hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300">About Us</Link>
+              className="flex text-black hover:text-blue-500 cursor-pointer font-semibold transition-colors duration-300">About Us</Link>
             </div>
 
             {/* Auth Links */}
             <div className="flex items-center space-x-5 text-sm hidden md:flex">
 
               {/* Login */}
-              <Link className="flex text-gray-600 text-sm cursor-pointer transition-colors duration-300 hover:text-blue-500 font-semibold text-blue-600" to="#">
+              <Link className="flex text-black text-sm cursor-pointer transition-colors duration-300 hover:text-blue-500 font-semibold text-blue-600" to="/login">
                 <svg
                   className="fill-current h-5 w-5 mr-2 mt-0.5"
                   xmlns="http://www.w3.org/2000/svg"

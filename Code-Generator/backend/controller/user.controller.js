@@ -78,13 +78,17 @@ export const login = async (req, res) => {
     }
 
     generateUserTokenAndSetCookie(user.id, res);
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '15d'
+    });
     
     res.status(200).json({
-      admin: {
+      user: {
         id: user.id,
         email: user.email,
         name: user.name,
-      }
+      },
+      token,
     });
 
   } catch (error) {
